@@ -30,9 +30,11 @@ app.use((0, cors_1.default)({
     methods: ["GET", "POST", "PUT", "DELETE"], // Allowed HTTP methods
     allowedHeaders: ["Content-Type"], // Allowed headers
 }));
+// Fix for the route handler types
 app.get('/', (req, res) => {
     return res.status(200).json("Hello from server .... ");
 });
+// Fix for async route handler
 app.get('/messages/:roomId', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { roomId } = req.params;
     console.log("server roomId is:", roomId);

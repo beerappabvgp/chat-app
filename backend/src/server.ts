@@ -3,7 +3,7 @@ import { chatMessageSchema, ClientMessageSchema } from "./schemas/clientMessage"
 import { handleJoinRoom } from "./handlers/joinRoomHandler";
 import { handleDisconnection } from "./handlers/disconnectHandler";
 import { handleChatMessage } from "./handlers/chatMessageHandler";
-import express from "express";
+import express, { Request, Response } from "express";
 import http from 'http';
 import prisma from "./prismaClient";
 import cors from "cors"; // Importing CORS middleware
@@ -11,6 +11,7 @@ import cors from "cors"; // Importing CORS middleware
 const app = express();
 const server = http.createServer(app);
 const wss = new WebSocketServer({ server });
+
 app.use(express.json());
 app.use(
   cors({
@@ -20,11 +21,13 @@ app.use(
   })
 );
 
-app.get('/', (req, res) => {
+// Fix for the route handler types
+app.get('/', (req: Request, res: Response): Response => {
   return res.status(200).json("Hello from server .... ");
-})
+});
 
-app.get('/messages/:roomId', async (req, res) => {
+// Fix for async route handler
+app.get('/messages/:roomId', async (req: Request, res: Response): Promise<Response> => {
   const { roomId } = req.params;
   console.log("server roomId is:", roomId);
   try {
