@@ -41,7 +41,7 @@ export const JoinRoom = ({ roomId }: { roomId: string }) => {
     } else {
       console.error("WebSocket is not connected ...");
     }
-  }, [ws, roomId, router]); // Dependencies: Re-run the effect if `ws` or `roomId` changes
+  }, [ws, roomId, router, username]); // Dependencies: Re-run the effect if `ws` or `roomId` changes
 
   // The UI will show only the acknowledgment message or a loading state if needed
   return (

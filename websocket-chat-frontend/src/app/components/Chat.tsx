@@ -14,36 +14,6 @@ export const Chat = ({ roomId }: { roomId: string }) => {
   const { username } = useUsername();
   const { count } = useOnlineCount();
 
-  const fetchPreviousMessages = async () => {
-    try {
-      const response = await fetch(`http://localhost:4000/messages/${roomId}`);
-      if (response.ok) {
-        const data = await response.json();
-        const transformedMessages = data
-          // eslint-disable-next-line @typescript-eslint/no-explicit-any
-          .map((message: any) => {
-            try {
-              return {
-                type: "chat",
-                payload: {
-                  roomId: message.roomId,
-                  message: message.message,
-                  userId: message.userId,
-                },
-              };
-            } catch {
-              return null;
-            }
-          })
-          // eslint-disable-next-line @typescript-eslint/no-explicit-any
-          .filter((msg: any) => msg !== null);
-
-        setReceivedMessages(transformedMessages);
-      }
-    } catch (error) {
-      console.error("Error fetching previous messages:", error);
-    }
-  };
 
   const handleSendMessage = () => {
     if (ws && ws.readyState === WebSocket.OPEN) {
@@ -70,6 +40,36 @@ export const Chat = ({ roomId }: { roomId: string }) => {
 
   useEffect(() => {
     if (!ws) return;
+    const fetchPreviousMessages = async () => {
+      try {
+        const response = await fetch(`http://localhost:4000/messages/${roomId}`);
+        if (response.ok) {
+          const data = await response.json();
+          const transformedMessages = data
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            .map((message: any) => {
+              try {
+                return {
+                  type: "chat",
+                  payload: {
+                    roomId: message.roomId,
+                    message: message.message,
+                    userId: message.userId,
+                  },
+                };
+              } catch {
+                return null;
+              }
+            })
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            .filter((msg: any) => msg !== null);
+  
+          setReceivedMessages(transformedMessages);
+        }
+      } catch (error) {
+        console.error("Error fetching previous messages:", error);
+      }
+    };
     fetchPreviousMessages();
 
     const handleMessage = (event: MessageEvent) => {
