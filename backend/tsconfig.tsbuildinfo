@@ -1,0 +1,1 @@
+{"root":["./src/prismaclient.ts","./src/server.ts","./src/handlers/chatmessagehandler.ts","./src/handlers/disconnecthandler.ts","./src/handlers/joinroomhandler.ts","./src/schemas/clientmessage.ts","./src/schemas/servermessageschema.ts","./src/services/roommanager.ts","./src/utils/sendmessage.ts"],"version":"5.7.2"}
