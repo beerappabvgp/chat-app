@@ -1,13 +1,11 @@
-'use client';
-
 import { JoinRoom } from "@/app/components/roomManagement";
 
-export default function JoinRoomWrapper({
+export default async function JoinRoomWrapper({
     params,
   }: {
-    params: { roomId: string };
+    params: Promise<{roomId: string}>;
   }) {
-    const roomId = params.roomId;
+    const roomId = (await params).roomId;
     console.log("RoomId is: ", roomId); 
     return (
         <div>

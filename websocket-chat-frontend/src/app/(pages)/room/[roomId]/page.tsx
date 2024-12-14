@@ -1,11 +1,11 @@
 import { Chat } from "@/app/components/Chat";
 
-export default function RoomWrapper({
+export default async function RoomWrapper({
   params,
 }: {
-  params: { roomId: string };
+  params: Promise<{roomId: string}>;
 }) {
-  const roomId = params.roomId;
+  const roomId = (await params).roomId;
   console.log("RoomId is: ", roomId); 
 
   return <Chat roomId={roomId} />;
