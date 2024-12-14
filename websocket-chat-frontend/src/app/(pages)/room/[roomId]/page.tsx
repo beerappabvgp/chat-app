@@ -5,7 +5,7 @@ export default function RoomWrapper({
 }: {
   params: { roomId: string };
 }) {
-  const { roomId } = params;
+  const roomId = params.roomId;
   console.log("RoomId is: ", roomId); 
 
   return <Chat roomId={roomId} />;
