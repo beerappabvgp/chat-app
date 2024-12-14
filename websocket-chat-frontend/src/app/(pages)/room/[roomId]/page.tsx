@@ -1,6 +1,6 @@
 import { Chat } from "@/app/components/Chat";
 
-export default async function RoomWrapper({
+export default function RoomWrapper({
   params,
 }: {
   params: { roomId: string };
