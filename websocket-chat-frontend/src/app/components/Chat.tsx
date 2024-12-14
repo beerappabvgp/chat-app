@@ -2,8 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useWebSocket } from "../WebSocketProvider";
-import { chatMessage } from "../../../../backend/src/schemas/clientMessage";
-import { chatMessageSchema } from "../types";
+import { chatMessage, chatMessageSchema } from "../types";
 import { useUsername } from "../UserNameContext";
 import { useOnlineCount } from "../OnlineProvider";
 
