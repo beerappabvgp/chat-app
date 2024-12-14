@@ -41,7 +41,7 @@ export const Chat = ({ roomId }: { roomId: string }) => {
     if (!ws) return;
     const fetchPreviousMessages = async () => {
       try {
-        const response = await fetch(`http://localhost:4000/messages/${roomId}`);
+        const response = await fetch(`https://chat-app-1-7umu.onrender.com/messages/${roomId}`);
         if (response.ok) {
           const data = await response.json();
           const transformedMessages = data

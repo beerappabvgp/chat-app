@@ -2,7 +2,8 @@
 
 import { useContext, useEffect, useState, createContext } from "react";
 
-const WS_URL = "ws://localhost:4000";
+// const WS_URL = "ws://localhost:4000";
+const WS_URL = "ws://chat-app-1-7umu.onrender.com/";
 
 type WebSocketContextValue = {
     ws: WebSocket | null;
