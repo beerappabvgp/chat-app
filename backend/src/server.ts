@@ -15,7 +15,7 @@ const wss = new WebSocketServer({ server });
 app.use(express.json());
 app.use(
   cors({
-    origin: "http://localhost:3000", // Frontend origin
+    origin: "https://chat-app-wwov.vercel.app/", // Frontend origin
     methods: ["GET", "POST", "PUT", "DELETE"], // Allowed HTTP methods
     allowedHeaders: ["Content-Type"], // Allowed headers
   })
